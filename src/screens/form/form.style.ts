@@ -1,3 +1,4 @@
+import { Theme } from "@/src/config/Theme";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -7,7 +8,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: #000;
+  color: ${Theme.colors.black};
   font-size: 24px;
   font-weight: 700;
 `;

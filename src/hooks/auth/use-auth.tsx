@@ -59,6 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const login = useCallback(
     async (email: string, password: string) => {
       try {
+        console.log("Chegou aqui");
         const response = await userLogin({ email, password });
         await updateJWTToken(response.token);
         setToken(response.token);

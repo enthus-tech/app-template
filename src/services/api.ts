@@ -1,4 +1,4 @@
-const instance = "http://192.168.100.29:3001/";
+const instance = "http://192.168.1.16:3001/";
 
 async function fetchWrapper<T = unknown>(
   endpoint: string,

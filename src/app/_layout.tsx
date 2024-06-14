@@ -1,4 +1,3 @@
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
@@ -17,6 +16,7 @@ import {
 import { AuthProvider } from "@hooks/auth/use-auth";
 import { AlertProvider } from "@hooks/alert/use-alert";
 import { AlertNotificationRoot } from "react-native-alert-notification";
+import { MainNavigator } from "./main";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -47,10 +47,7 @@ export default function RootLayout() {
     <AlertNotificationRoot>
       <AlertProvider>
         <AuthProvider>
-          <Stack>
-            <Stack.Screen name="(home)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
+          <MainNavigator />
         </AuthProvider>
       </AlertProvider>
     </AlertNotificationRoot>
