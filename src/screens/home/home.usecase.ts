@@ -1,4 +1,4 @@
-import useUsers from "@/src/hooks/use-users";
+import useUsers from "@/src/hooks/users/use-users";
 
 interface IUserUsecase {
   page: number;
