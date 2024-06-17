@@ -46,6 +46,6 @@ export const userLogin = async (
 
 export const resetPassword = async (
   resetPasswordData: IResetPasswordData
-): Promise<{ status: string }> => {
-  return await Post("reset-password", resetPasswordData);
+): Promise<{ token: string }> => {
+  return await Post("auth/reset-password", resetPasswordData);
 };

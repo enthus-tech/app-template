@@ -1,0 +1,37 @@
+import React from "react";
+import { render, fireEvent } from "@testing-library/react-native";
+import Button from "../Button";
+
+describe("Button Component", () => {
+  it("renders correctly", () => {
+    const { getByText } = render(<Button text="Click me" onPress={() => {}} />);
+    expect(getByText("Click me")).toBeTruthy();
+  });
+
+  it("calls onPress function when pressed", () => {
+    const onPressMock = jest.fn();
+    const { getByText } = render(
+      <Button text="Click me" onPress={onPressMock} />
+    );
+    fireEvent.press(getByText("Click me"));
+    expect(onPressMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not call onPress function when disabled", () => {
+    const onPressMock = jest.fn();
+    const { getByText } = render(
+      <Button text="Click me" onPress={onPressMock} disabled />
+    );
+    fireEvent.press(getByText("Click me"));
+    expect(onPressMock).not.toHaveBeenCalled();
+  });
+
+  it("should not call onPress function when isLoading", () => {
+    const onPressMock = jest.fn();
+    const { getByRole } = render(
+      <Button text="Click me" onPress={onPressMock} isLoading />
+    );
+    fireEvent.press(getByRole("button"));
+    expect(onPressMock).not.toHaveBeenCalled();
+  });
+});

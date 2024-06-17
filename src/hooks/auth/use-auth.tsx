@@ -1,4 +1,8 @@
-import { createUser, userLogin } from "@services/user.services";
+import {
+  createUser,
+  userLogin,
+  resetPassword as resetUserPassword,
+} from "@services/user.services";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   createContext,
@@ -17,6 +21,12 @@ export interface AuthContextProps {
   login: (email: string, password: string) => Promise<void>;
   register: (user: IRegisterUserData) => Promise<void>;
   logoff: () => Promise<void>;
+  resetPassword: (
+    old_password: string,
+    email: string,
+    password: string,
+    password_confirm: string
+  ) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -26,6 +36,12 @@ const authContextDefaultValues: AuthContextProps = {
   login: async (email: string, password: string) => undefined,
   register: async (user: IRegisterUserData) => undefined,
   logoff: async () => undefined,
+  resetPassword: async (
+    old_password: string,
+    email: string,
+    password: string,
+    password_confirm: string
+  ) => undefined,
   isLoading: true,
 };
 
@@ -53,13 +69,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       await AsyncStorage.setItem("token", token);
     } catch (e) {
       console.log("ERRO AO ATUALIZAR TOKEN");
+      console.log(JSON.stringify(e, null, 2));
     }
   }, []);
 
   const login = useCallback(
     async (email: string, password: string) => {
       try {
-        console.log("Chegou aqui");
         const response = await userLogin({ email, password });
         await updateJWTToken(response.token);
         setToken(response.token);
@@ -69,6 +85,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           title: "Erro ao fazer login",
         });
         console.log("ERRO AO LOGAR");
+        console.log(JSON.stringify(e, null, 2));
       }
     },
     [addAlert, updateJWTToken]
@@ -86,9 +103,37 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           title: "Erro ao registrar ",
         });
         console.log("ERRO AO REGISTRAR");
+        console.log(JSON.stringify(e, null, 2));
       }
     },
     [addAlert, updateJWTToken]
+  );
+
+  const resetPassword = useCallback(
+    async (
+      old_password: string,
+      email: string,
+      password: string,
+      password_confirm: string
+    ) => {
+      try {
+        const response = await resetUserPassword({
+          old_password,
+          email,
+          password,
+          password_confirm,
+        });
+        await updateJWTToken(response.token);
+      } catch (e: any) {
+        addAlert({
+          type: ALERT_TYPE.DANGER,
+          title: "Não foi possível resetar sua senha.",
+        });
+        console.log("Erro ao resetar senha:");
+        console.log(JSON.stringify(e, null, 2));
+      }
+    },
+    []
   );
 
   const logoff = useCallback(async () => {
@@ -97,12 +142,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setToken(undefined);
     } catch (e) {
       console.log("ERRO AO DESLOGAR");
+      console.log(JSON.stringify(e, null, 2));
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ updateJWTToken, token, login, register, isLoading, logoff }}
+      value={{
+        updateJWTToken,
+        token,
+        login,
+        register,
+        isLoading,
+        logoff,
+        resetPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>
