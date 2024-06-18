@@ -1,6 +1,6 @@
 const instance = "http://192.168.1.16:3001/";
 
-async function fetchWrapper<T = unknown>(
+export async function fetchWrapper<T = unknown>(
   endpoint: string,
   init?: RequestInit | undefined
 ): Promise<T | null> {
