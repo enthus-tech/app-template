@@ -9,13 +9,13 @@ interface ButtonProps extends TouchableOpacityProps {
 const Button = ({ text, isLoading, ...props }: ButtonProps) => {
   if (isLoading) {
     return (
-      <S.ButtonContainer accessibilityRole="button">
+      <S.ButtonContainer testID="loading-button">
         <ActivityIndicator />
       </S.ButtonContainer>
     );
   } else {
     return (
-      <S.ButtonContainer accessibilityRole="button" {...props}>
+      <S.ButtonContainer {...props}>
         <S.ButtonText>{text}</S.ButtonText>
       </S.ButtonContainer>
     );

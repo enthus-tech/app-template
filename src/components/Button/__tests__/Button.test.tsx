@@ -28,10 +28,10 @@ describe("Button Component", () => {
 
   it("should not call onPress function when isLoading", () => {
     const onPressMock = jest.fn();
-    const { getByRole } = render(
+    const { getByTestId } = render(
       <Button text="Click me" onPress={onPressMock} isLoading />
     );
-    fireEvent.press(getByRole("button"));
+    fireEvent.press(getByTestId("loading-button"));
     expect(onPressMock).not.toHaveBeenCalled();
   });
 });
