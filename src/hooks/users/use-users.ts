@@ -1,5 +1,5 @@
 import useSWRInfinite from "swr/infinite";
-import { getUsers } from "@services/user.services";
+import { getUsers } from "@services/user/user.services";
 import { IUserData } from "@/types";
 import { useSWRParams } from "@hooks/network/useSWRParams";
 

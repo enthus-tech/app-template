@@ -4,7 +4,7 @@ import type {
   IResetPasswordData,
   IUserData,
 } from "@/types";
-import { Get, Patch, Delete, Post } from "@services/api";
+import { Get, Patch, Delete, Post } from "@services/api/api";
 
 export const getUsers = async (
   page: number,

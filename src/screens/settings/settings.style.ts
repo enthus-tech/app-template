@@ -26,7 +26,7 @@ export const LogoutButtonText = styled(Text)`
 `;
 
 export const ResetPasswordContainer = styled(View)`
-  margin-top: 32px;
+  margin: 32px 0;
   width: 100%;
 `;
 

@@ -1,5 +1,6 @@
+import "jest-styled-components/native";
 import React from "react";
-import { render, fireEvent } from "@testing-library/react-native";
+import { render, fireEvent, screen } from "@testing-library/react-native";
 import Button from "../Button";
 
 describe("Button Component", () => {
@@ -15,6 +16,15 @@ describe("Button Component", () => {
     );
     fireEvent.press(getByText("Click me"));
     expect(onPressMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should have different style when disabled", () => {
+    const onPressMock = jest.fn();
+    const { getByTestId } = render(
+      <Button text="Click me" onPress={onPressMock} disabled />
+    );
+
+    expect(getByTestId("button-container")).toHaveStyleRule("opacity", 0.5);
   });
 
   it("does not call onPress function when disabled", () => {

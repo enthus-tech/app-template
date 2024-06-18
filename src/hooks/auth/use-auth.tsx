@@ -2,7 +2,7 @@ import {
   createUser,
   userLogin,
   resetPassword as resetUserPassword,
-} from "@services/user.services";
+} from "@services/user/user.services";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   createContext,

@@ -2,11 +2,16 @@ import { Theme } from "@/src/config/Theme";
 import { TouchableOpacity, Text } from "react-native";
 import styled from "styled-components/native";
 
-export const ButtonContainer = styled(TouchableOpacity)`
+interface ButtonProps {
+  backgroundColor?: string;
+}
+
+export const ButtonContainer = styled(TouchableOpacity)<ButtonProps>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: ${Theme.colors.mainColor};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ?? Theme.colors.mainColor};
   padding: 12px 10px;
   border-radius: 8px;
   width: 100%;

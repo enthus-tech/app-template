@@ -6,7 +6,8 @@
       "@types/styled-components-react-native",
       "jest",
       "node",
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "jest-styled-components"
     ],
     "paths": {
       "@/*": ["./*"],
