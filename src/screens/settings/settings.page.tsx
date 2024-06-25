@@ -4,69 +4,19 @@ import { useSettingsController } from "./settings.controller";
 import * as S from "./settings.style";
 import Button from "@/src/components/Button/Button";
 import { Theme } from "@/src/config/Theme";
+import { Link } from "expo-router";
 
 export default function SettingsPage() {
-  const { onPressLogoff, control, errors, handleSubmit, onSubmit } =
-    useSettingsController();
+  const { onPressLogoff } = useSettingsController();
 
   return (
     <S.Container>
-      <S.ResetPasswordContainer>
-        <S.Title>Resetar senha</S.Title>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field: { onChange } }) => (
-            <Input
-              error={errors.email?.message}
-              onChangeText={onChange}
-              placeholder="example@example.com"
-              label="Confirme seu email"
-            />
-          )}
-        />
-        <Controller
-          name="old_password"
-          control={control}
-          render={({ field: { onChange } }) => (
-            <Input
-              error={errors.old_password?.message}
-              onChangeText={onChange}
-              placeholder="********"
-              label="Confirme sua senha"
-            />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field: { onChange } }) => (
-            <Input
-              error={errors.password?.message}
-              onChangeText={onChange}
-              placeholder="********"
-              label="Digite sua nova senha"
-            />
-          )}
-        />
-        <Controller
-          name="password_confirm"
-          control={control}
-          render={({ field: { onChange } }) => (
-            <Input
-              error={errors.password_confirm?.message}
-              onChangeText={onChange}
-              placeholder="********"
-              label="Confirme sua nova senha"
-            />
-          )}
-        />
-        <Button
-          disabled={Object.keys(errors).length > 0}
-          onPress={handleSubmit(onSubmit)}
-          text="Salvar"
-        />
-      </S.ResetPasswordContainer>
+      <Link
+        style={{ marginBottom: 16, backgroundColor: "#d6d6d9" }}
+        href="/reset-password"
+      >
+        Resetar senha
+      </Link>
       <Button
         backgroundColor={Theme.colors.error}
         text="Deslogar"
