@@ -24,6 +24,10 @@ export function MainNavigator() {
         name="(auth)"
         options={{ headerShown: false, headerTitle: "Auth" }}
       />
+      <Stack.Screen
+        name="(group)"
+        options={{ headerShown: false, headerTitle: "Auth" }}
+      />
       <Stack.Screen name="+not-found" />
     </Stack>
   );
