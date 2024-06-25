@@ -10,11 +10,13 @@ export const InputContainer = styled(View)`
 
 export const InputLabel = styled(Text)`
   color: ${Theme.colors.black};
+  font-family: ${Theme.fonts.regular};
   margin-bottom: 4px;
 `;
 
 export const InputText = styled(TextInput)`
   border: 1px solid ${Theme.colors.black};
+  font-family: ${Theme.fonts.regular};
   border-radius: 12px;
   padding: 10px 8px;
   width: 100%;
@@ -22,5 +24,6 @@ export const InputText = styled(TextInput)`
 
 export const ErrorText = styled(Text)`
   color: ${Theme.colors.error};
+  font-family: ${Theme.fonts.regular};
   font-size: 14px;
 `;

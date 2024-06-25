@@ -22,4 +22,5 @@ export const ButtonText = styled(Text)`
   font-size: 16px;
   font-weight: 500;
   color: ${Theme.colors.white};
+  font-family: ${Theme.fonts.semiBold};
 `;

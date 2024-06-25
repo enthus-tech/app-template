@@ -12,12 +12,13 @@ export const Container = styled(View)`
 
 export const Title = styled(Text)`
   color: ${Theme.colors.title};
+  font-family: ${Theme.fonts.bold};
   font-size: 24px;
-  font-weight: 700;
 `;
 
 export const Description = styled(Text)`
   color: ${Theme.colors.title};
+  font-family: ${Theme.fonts.regular};
   font-size: 16px;
 `;
 

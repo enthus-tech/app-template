@@ -4,11 +4,13 @@ import { FlatList, ListRenderItem } from "react-native";
 import { useUsersController } from "@screens/home/home.controller";
 import { useCallback } from "react";
 import { useAlert } from "@/src/hooks/alert/use-alert";
+import { useTranslation } from "react-i18next";
 import { ALERT_TYPE } from "react-native-alert-notification";
 
 export default function HomePage() {
+  const { t } = useTranslation();
   const { addAlert } = useAlert();
-  const { users, paginateUsers, isLoadingUsers } = useUsersController();
+  const { users, paginateUsers } = useUsersController();
 
   const renderItem: ListRenderItem<IUserData> = useCallback(
     ({ item }) => (
@@ -32,9 +34,9 @@ export default function HomePage() {
 
   return (
     <S.Container>
-      <S.Title>App Template!</S.Title>
+      <S.Title>{t("title")}</S.Title>
       <S.AlertButton onPress={handleSendAlert}>
-        <S.AlertButtonText>Disparar alerta</S.AlertButtonText>
+        <S.AlertButtonText>{t("buttonText")}</S.AlertButtonText>
       </S.AlertButton>
       <S.UsersListContainer>
         <FlatList<IUserData>

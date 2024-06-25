@@ -1,3 +1,4 @@
+import "@config/i18n";
 import { Stack, router } from "expo-router";
 import { useAuth } from "../hooks/auth/use-auth";
 import { useEffect } from "react";

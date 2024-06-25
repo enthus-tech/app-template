@@ -23,6 +23,7 @@ export const LogoutButtonText = styled(Text)`
   font-size: 16px;
   font-weight: 500;
   color: ${Theme.colors.white};
+  font-family: ${Theme.fonts.semiBold};
 `;
 
 export const ResetPasswordContainer = styled(View)`
@@ -36,6 +37,7 @@ export const Title = styled(Text)`
   color: ${Theme.colors.black};
   text-align: center;
   margin: 8px 0;
+  font-family: ${Theme.fonts.bold};
 `;
 
 export const InputContainer = styled(View)`
@@ -46,10 +48,12 @@ export const InputContainer = styled(View)`
 export const InputLabel = styled(Text)`
   color: ${Theme.colors.black};
   margin-bottom: 4px;
+  font-family: ${Theme.fonts.regular};
 `;
 
 export const InputText = styled(TextInput)`
   border: 1px solid ${Theme.colors.black};
   border-radius: 12px;
   padding: 10px 8px;
+  font-family: ${Theme.fonts.regular};
 `;
